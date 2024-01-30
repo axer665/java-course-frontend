@@ -1,0 +1,9 @@
+version: '3'
+services:
+    cloudstorage-frontend:
+        container_name: cloudstorage-front
+        restart: always
+        build:
+          context: ./
+        ports:
+          - "8080:8080"
