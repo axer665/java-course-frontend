@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue';
 // import {AUTH_TOKEN_KEY} from "@/api/httpClient";
 import store from '@/stores/index';
+import HomeAdmin from '@/views/HomeAdmin.vue';
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -20,6 +21,14 @@ const routes: Array<RouteRecordRaw> = [
         component: Login,
         meta: {
             guestOnly: true
+        }
+    },
+    {
+        path: '/admin',
+        name: 'HomeAdmin',
+        component: HomeAdmin,
+        meta: {
+            authorizedOnly: true
         }
     },
     {

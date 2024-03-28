@@ -98,13 +98,16 @@
                     email: form.email,
                     password: form.password
                 }).then(res => {
+                    const homePage = res.data.is_admin ? 'HomeAdmin' : 'Home'
+                    
                     // Очищаем ошибки
                     formErrors.email = [];
                     formErrors.password = [];
 
                     // Переходим на главную
+                    
                     router.push({
-                        'name': 'Home'
+                        'name': homePage
                     });
                 }).catch(res => {
                     // Ошибка при авторизации

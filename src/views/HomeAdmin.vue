@@ -20,6 +20,13 @@
                                         @change="selectAllFiles" />
                         </th>
                         <th class="files__header"
+                            @click="changeSort('username')">
+                            Пользователь
+
+                            <img v-if="sortColumn === 'username' && sortColumnReverse" src="@/assets/icons/down-arrow.svg">
+                            <img v-if="sortColumn === 'username' && !sortColumnReverse" src="@/assets/icons/up-arrow.svg">
+                        </th>
+                        <th class="files__header"
                             @click="changeSort('filename')">
                             Название
 
@@ -54,10 +61,6 @@
                                       @click="selectedDownload">
                                 Скачать выбранные
                             </e-button>
-                            <e-button type="plain"
-                                      @click="selectedDelete">
-                                Удалить выбранные
-                            </e-button>
                         </th>
                     </tr>
                 </thead>
@@ -72,6 +75,12 @@
                         class="files__file file">
                         <td class="files__cell files__cell--select">
                             <e-checkbox v-model="file.selected" @change="onFileSelect" />
+                        </td>
+                        <td class="files__cell"
+                            @click="file.selected = !file.selected">
+                            <span>
+                                {{ file.username }}
+                            </span>
                         </td>
                         <td :title="file.filename" class="files__cell"
                             @click="file.selected = !file.selected">
@@ -102,20 +111,10 @@
                             </span>
                         </td>
                         <td class="files__cell files__cell--actions">
-                            <e-button title="Изменить"
-                                      type="text"
-                                      @click="fileChangeName(file)">
-                                <img src="@/assets/icons/edit.svg">
-                            </e-button>
                             <e-button title="Скачать"
                                       type="text"
                                       @click="fileDownload(file)">
                                 <img src="@/assets/icons/download.svg">
-                            </e-button>
-                            <e-button title="Удалить"
-                                      type="text"
-                                      @click="fileDelete(file)">
-                                <img src="@/assets/icons/delete.svg">
                             </e-button>
                         </td>
                     </tr>

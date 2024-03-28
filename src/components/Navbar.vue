@@ -5,7 +5,7 @@
          }">
         <div class="container">
             <img class="navbar__logo"
-                 src="../assets/logo.svg">
+                 src="../assets/cloud_storage.svg">
 
             <EButton v-if="!isGuest"
                      class="navbar__exit"
